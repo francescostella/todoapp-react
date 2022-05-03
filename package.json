@@ -1,0 +1,29 @@
+{
+  "name": "todoapp-react",
+  "version": "1.0.0",
+  "description": "Webpack, React, Redux, Redux Thunk, Reselect, Styled Components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel serve public/index.html --open chrome",
+    "build": "parcel build public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francescostella/todoapp-react.git"
+  },
+  "author": "Francesco Stella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francescostella/todoapp-react/issues"
+  },
+  "homepage": "https://github.com/francescostella/todoapp-react#readme",
+  "dependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "parcel": "^2.5.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
