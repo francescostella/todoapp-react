@@ -1,0 +1,80 @@
+:root {
+  color-scheme: light dark;
+  
+  --color-primary: #b72027;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #ffdad5;
+  --color-on-primary-container: #410004;
+  --color-secondary: #9c4052;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #ffdadf;
+  --color-on-secondary-container: #400012;
+  --color-tertiary: #8f437d;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #ffd7f1;
+  --color-on-tertiary-container: #3a0032;
+  --color-error: #B3261E;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #F9DEDC;
+  --color-on-error-container: #410E0B;
+  --color-outline: #79747E;
+  --color-background: #FFFBFE;
+  --color-on-background: #1C1B1F;
+  --color-surface: #FFFBFE;
+  --color-on-surface: #1C1B1F;
+  --color-surface-variant: #E7E0EC;
+  --color-on-surface-variant: #49454F;
+  --color-inverse-surface: #313033;
+  --color-inverse-on-surface: #F4EFF4;
+
+  &.dark-theme {
+    --color-primary: #ffb3ac;
+    --color-on-primary: #680009;
+    --color-primary-container: #930012;
+    --color-on-primary-container: #ffdad5;
+    --color-secondary: #ffb2be;
+    --color-on-secondary: #601126;
+    --color-secondary-container: #7d293b;
+    --color-on-secondary-container: #ffdadf;
+    --color-tertiary: #fface8;
+    --color-on-tertiary: #58124c;
+    --color-tertiary-container: #732b64;
+    --color-on-tertiary-container: #ffd7f1;
+    --color-error: #F2B8B5;
+    --color-on-error: #601410;
+    --color-error-container: #8C1D18;
+    --color-on-error-container: #F9DEDC;
+    --color-outline: #938F99;
+    --color-background: #1C1B1F;
+    --color-on-background: #E6E1E5;
+    --color-surface: #1C1B1F;
+    --color-on-surface: #E6E1E5;
+    --color-surface-variant: #49454F;
+    --color-on-surface-variant: #CAC4D0;
+    --color-inverse-surface: #E6E1E5;
+    --color-inverse-on-surface: #1C1B1F;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  display: block;
+  max-width: 720px;
+  min-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+}
