@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoListItem({ todo }) {
+function TodoItem({ todo }) {
   return (
     <li className="todo-list-item">
       <h3 className="todo-list-item__text">{todo.text}</h3>
@@ -16,4 +16,4 @@ function TodoListItem({ todo }) {
   );
 }
 
-export default TodoListItem;
+export default TodoItem;

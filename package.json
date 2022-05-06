@@ -23,8 +23,10 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@parcel/transformer-sass": "^2.5.0",
+    "@reduxjs/toolkit": "^1.8.1",
     "parcel": "^2.5.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-redux": "^8.0.1"
   }
 }
