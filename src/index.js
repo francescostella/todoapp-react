@@ -14,14 +14,3 @@ root.render(
     <App />
   </Provider>
 );
-
-/**
- * Detect OS theme color and set the matching App theme color
- */
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-if (prefersDarkScheme.matches) {
-  document.documentElement.classList.add('dark-theme');
-} else {
-  document.documentElement.classList.remove('dark-theme');
-}
