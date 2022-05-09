@@ -1,3 +1,10 @@
 .todo-list {
-  
+  $items-vertical-spacing: 16px;
+  margin: 0;
+  padding: 0;
+
+  &__empty {
+    color: var(--color-outline);
+    text-align: center;
+  }
 }

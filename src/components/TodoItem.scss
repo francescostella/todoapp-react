@@ -1,0 +1,217 @@
+.todo-item {
+  $items-vertical-spacing: 16px;
+  display: flex;
+  align-items: center;
+  padding: $items-vertical-spacing;
+  background-color: var(--color-surface-variant);
+  border: 1px solid var(--color-surface-variant);
+  border-bottom-width: 0;
+
+  &--delete {
+    animation: shrinkHeight .4s ease forwards;
+  }
+
+  &:last-child {
+    border-bottom-width: 1px;
+  }
+
+  position: relative;
+  user-select: none;
+
+  &.list__item--show .list__button {
+    display: block;
+  }
+
+  &:hover .list__checkbox ~ .list__checkmark {
+    background-color: var(--color-tertiary-container);
+  }
+
+  &--completed {
+    color: var(--color-muted);
+  }
+
+  &--fav {
+    //
+  }
+
+  .list__checkbox:checked ~ .list__checkmark {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+  }
+
+  .list__checkbox:checked ~ .list__checkmark:after {
+    display: block;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+
+    .list__item--completed & {
+      text-decoration: line-through;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    margin: 0;
+  }
+
+  &__checkmark {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    margin-right: 16px;
+    border-radius: 3px;
+    border: 1px solid var(--color-on-background);
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  &__description {
+    line-height: 1.2;
+    
+    &--edit {
+      display: none;
+
+      border: 1px solid var(--color-outline);
+      padding: 0;
+      margin: -1px 0;
+      width: 100%;
+      font-size: 16px;
+      padding: 0 16px;
+      background-color: var(--color-surface-variant);
+      color: var(--color-on-surface);
+
+      &:focus {
+        background-color: var(--color-tertiary-container);
+      }
+    }
+
+    .list__item--edit & {
+      &--view {
+        display: none;
+      }
+
+      &--edit {
+        display: block;
+      }
+    }
+
+  }
+
+  &__info {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    
+    // For iOS
+    padding: 0 8px; 
+    
+    border-radius: 3px;
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface);
+
+    &:hover {
+      // background: var(--color-tertiary-container);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+
+    // For iOS
+    padding: 0 8px; 
+
+    border-radius: 3px;
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface);
+
+    &:hover {
+      background: var(--color-tertiary-container);
+    }
+
+    &--fav {
+      // Keep it under 20px otherwise parent element
+      // will shift height when children 
+      // visibility will be toggled
+      font-size: 18px;
+
+      .list__item--fav & {
+        display: block;
+      }
+    }
+
+    &--edit {
+      //
+    }
+
+    &--delete {
+      //
+    }
+  }
+
+  &__star {
+    pointer-events: none;
+
+    &--empty {
+      display: block;
+
+      .list__item--fav & {
+        display: none;
+      }
+    }
+
+    &--filled {
+      display: none;
+      color: gold;
+      text-shadow: 0 0 1px gray;
+
+      .list__item--fav & {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes shrinkHeight {
+  to { 
+    max-height: 0;
+    opacity: 0;
+    transform: scale(0);
+    padding: 0;
+    margin: 0;
+  }
+}
