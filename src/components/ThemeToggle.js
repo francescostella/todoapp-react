@@ -15,7 +15,6 @@ function ThemeToggle() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark-theme', isDarkTheme);
-    console.log('useEffect: ', isDarkTheme);
   }, [isDarkTheme]);
 
   return (
