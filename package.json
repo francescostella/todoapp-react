@@ -2,10 +2,11 @@
   "name": "todoapp-react",
   "version": "1.0.0",
   "description": "Webpack, React, Redux, Redux Thunk, Reselect, Styled Components",
-  "main": "index.js",
+  "source": "public/index.html",
   "scripts": {
-    "dev": "parcel serve public/index.html --open chrome",
-    "build": "parcel build public/index.html"
+    "dev": "parcel serve --open chrome",
+    "build": "parcel build",
+    "stats": "BUNDLE_BUDDY=true parcel build"
   },
   "repository": {
     "type": "git",
