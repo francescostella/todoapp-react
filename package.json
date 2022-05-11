@@ -5,8 +5,7 @@
   "source": "public/index.html",
   "scripts": {
     "dev": "parcel serve --open chrome",
-    "build": "parcel build",
-    "stats": "BUNDLE_BUDDY=true parcel build"
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
