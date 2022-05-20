@@ -12,7 +12,7 @@ function AddForm() {
     event.preventDefault();
 
     if (value.trim().length === 0) {
-      alert('Enter a task before adding !!');
+      alert('Enter a todo description before adding.');
       setValue('');
       return;
     }
