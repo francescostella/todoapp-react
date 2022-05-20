@@ -12,7 +12,7 @@ const todosSlice = createSlice({
       });
     },
     deleteTodo: (state) => {
-      return state.filter((todo) => item.id !== action.payload.id);
+      return state.filter((todo) => todo.id !== action.payload.id);
     },
   },
 });
