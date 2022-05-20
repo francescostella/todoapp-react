@@ -18,11 +18,11 @@
   position: relative;
   user-select: none;
 
-  &.list__item--show .list__button {
+  &.todo-item--show .todo-item__button {
     display: block;
   }
 
-  &:hover .list__checkbox ~ .list__checkmark {
+  &:hover .todo-item__checkbox ~ .todo-item__checkmark {
     background-color: var(--color-tertiary-container);
   }
 
@@ -34,12 +34,12 @@
     //
   }
 
-  .list__checkbox:checked ~ .list__checkmark {
+  .todo-item__checkbox:checked ~ .todo-item__checkmark {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
   }
 
-  .list__checkbox:checked ~ .list__checkmark:after {
+  .todo-item__checkbox:checked ~ .todo-item__checkmark:after {
     display: block;
   }
 
@@ -50,7 +50,7 @@
     padding: 0;
     cursor: pointer;
 
-    .list__item--completed & {
+    .todo-item--completed & {
       text-decoration: line-through;
     }
   }
@@ -111,7 +111,7 @@
       }
     }
 
-    .list__item--edit & {
+    .todo-item--edit & {
       &--view {
         display: none;
       }
@@ -169,7 +169,7 @@
       // visibility will be toggled
       font-size: 18px;
 
-      .list__item--fav & {
+      .todo-item--fav & {
         display: block;
       }
     }
@@ -189,7 +189,7 @@
     &--empty {
       display: block;
 
-      .list__item--fav & {
+      .todo-item--fav & {
         display: none;
       }
     }
@@ -199,7 +199,7 @@
       color: gold;
       text-shadow: 0 0 1px gray;
 
-      .list__item--fav & {
+      .todo-item--fav & {
         display: block;
       }
     }

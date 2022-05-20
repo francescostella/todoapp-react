@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TodoItem.scss';
 
 function TodoItem({ todo }) {
+  const [completed, setCompleted] = useState(todo.completed);
+
+  const onChangeHandler = (event) => {
+    setCompleted(event.target.checked);
+  };
+
   return (
-    <li className="todo-item">
+    <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`}>
       <label className="todo-item__label">
-        <input className="todo-item__checkbox" type="checkbox" />
+        <input
+          className="todo-item__checkbox"
+          type="checkbox"
+          checked={completed}
+          onChange={onChangeHandler}
+        />
         <span className="todo-item__checkmark"></span>
         <span className="todo-item__description todo-item__description--view">
           {todo.text}
