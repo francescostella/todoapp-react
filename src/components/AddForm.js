@@ -42,7 +42,10 @@ function AddForm() {
       >
         Add
       </button>
-      <button className="add-form__button add-form__button--clear" type="submit">
+      <button
+        className="add-form__button add-form__button--clear"
+        type="submit"
+      >
         Clear Completed
       </button>
     </form>
