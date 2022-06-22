@@ -5,7 +5,6 @@ import './AddForm.scss';
 
 function AddForm() {
   const [value, setValue] = useState('');
-
   const dispatch = useDispatch();
 
   const onSubmit = (event) => {
@@ -22,7 +21,7 @@ function AddForm() {
         text: value,
       })
     );
-
+    
     setValue('');
   };
 
@@ -33,6 +32,7 @@ function AddForm() {
         type="text"
         autoFocus
         placeholder="What's it next?"
+        value={value}
         onChange={(event) => setValue(event.target.value)}
       />
       <button

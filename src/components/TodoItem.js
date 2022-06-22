@@ -3,13 +3,24 @@ import './TodoItem.scss';
 
 function TodoItem({ todo }) {
   const [completed, setCompleted] = useState(todo.completed);
+  const [showButtons, setShowButtons] = useState();
 
   const onChangeHandler = (event) => {
     setCompleted(event.target.checked);
   };
 
+  const toggleButtons = (event) => {
+    event.preventDefault();
+    setShowButtons(!showButtons);
+  };
+
   return (
-    <li className={`todo-item ${completed ? 'todo-item--completed' : ''}`}>
+    <li
+      className={`todo-item 
+        ${completed ? 'todo-item--completed' : ''}
+        ${showButtons ? 'todo-item--show' : ''}
+      `}
+    >
       <label className="todo-item__label">
         <input
           className="todo-item__checkbox"
@@ -39,7 +50,7 @@ function TodoItem({ todo }) {
           <span className="todo-item__star todo-item__star--filled">★</span>
         </button>
       </div>
-      <button className="todo-item__info">ℹ️</button>
+      <button className="todo-item__info" onClick={toggleButtons}>ℹ️</button>
     </li>
   );
 }
