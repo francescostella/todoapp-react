@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../redux/todosSlice';
+import { toggleTodo, deleteTodo } from '../redux/todosSlice';
 import './TodoItem.scss';
 
 function TodoItem({ todo }) {
-  const [completed, setCompleted] = useState(todo.completed);
   const [showButtons, setShowButtons] = useState();
   const dispatch = useDispatch();
 
-  const onChangeHandler = (event) => {
-    setCompleted(event.target.checked);
+  const onChangeHandler = (event, id) => {
+    dispatch(toggleTodo({
+      id
+    }))
   };
 
   const onToggleButtons = (event) => {
@@ -29,7 +30,7 @@ function TodoItem({ todo }) {
   return (
     <li
       className={`todo-item 
-        ${completed ? 'todo-item--completed' : ''}
+        ${todo.completed ? 'todo-item--completed' : ''}
         ${showButtons ? 'todo-item--show' : ''}
       `}
     >
@@ -37,8 +38,8 @@ function TodoItem({ todo }) {
         <input
           className="todo-item__checkbox"
           type="checkbox"
-          checked={completed}
-          onChange={onChangeHandler}
+          checked={todo.completed}
+          onChange={event => onChangeHandler(event, todo.id)}
         />
         <span className="todo-item__checkmark"></span>
         <span className="todo-item__description todo-item__description--view">
