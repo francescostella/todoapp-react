@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/todosSlice';
+import { addTodo, clearCompleted } from '../redux/todosSlice';
 import './AddForm.scss';
 
 function AddForm() {
@@ -25,6 +25,11 @@ function AddForm() {
     setValue('');
   };
 
+  const onClearCompleted = (event) => {
+    event.preventDefault();
+    dispatch(clearCompleted());
+  };
+
   return (
     <form className="add-form">
       <input
@@ -45,6 +50,7 @@ function AddForm() {
       <button
         className="add-form__button add-form__button--clear"
         type="submit"
+        onClick={onClearCompleted}
       >
         Clear Completed
       </button>

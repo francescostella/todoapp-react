@@ -13,11 +13,16 @@ const todosSlice = createSlice({
       });
     },
     deleteTodo: (state) => {
-      return state.filter((todo) => todo.id !== action.payload.id);
+      return state.filter(todo => todo.id !== action.payload.id);
+    },
+    clearCompleted: (state) => {
+      return state.filter(todo => {
+        return !todo.completed;
+      });
     },
   },
 });
 
-export const { addTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, clearCompleted } = todosSlice.actions;
 export const selectCount = (state) => state.length;
 export default todosSlice.reducer;
