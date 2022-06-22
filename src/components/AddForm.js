@@ -21,7 +21,7 @@ function AddForm() {
         text: value,
       })
     );
-    
+
     setValue('');
   };
 

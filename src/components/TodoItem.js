@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../redux/todosSlice';
 import './TodoItem.scss';
 
 function TodoItem({ todo }) {
   const [completed, setCompleted] = useState(todo.completed);
   const [showButtons, setShowButtons] = useState();
+  const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
     setCompleted(event.target.checked);
   };
 
-  const toggleButtons = (event) => {
+  const onToggleButtons = (event) => {
     event.preventDefault();
     setShowButtons(!showButtons);
+  };
+
+  const onRemoveTodo = (event, id) => {
+    event.preventDefault();
+    dispatch(
+      deleteTodo({
+        id,
+      })
+    );
   };
 
   return (
@@ -39,7 +51,10 @@ function TodoItem({ todo }) {
         />
       </label>
       <div className="todo-item__buttons">
-        <button className="todo-item__button todo-item__button--delete">
+        <button
+          className="todo-item__button todo-item__button--delete"
+          onClick={(event) => onRemoveTodo(event, todo.id)}
+        >
           ❌
         </button>
         <button className="todo-item__button todo-item__button--edit">
@@ -50,7 +65,9 @@ function TodoItem({ todo }) {
           <span className="todo-item__star todo-item__star--filled">★</span>
         </button>
       </div>
-      <button className="todo-item__info" onClick={toggleButtons}>ℹ️</button>
+      <button className="todo-item__info" onClick={onToggleButtons}>
+        ℹ️
+      </button>
     </li>
   );
 }
