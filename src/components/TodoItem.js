@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../redux/todosSlice';
+import { toggleTodo, favTodo, deleteTodo } from '../redux/todosSlice';
 import './TodoItem.scss';
 
 function TodoItem({ todo }) {
@@ -8,9 +8,11 @@ function TodoItem({ todo }) {
   const dispatch = useDispatch();
 
   const onChangeHandler = (event, id) => {
-    dispatch(toggleTodo({
-      id
-    }))
+    dispatch(
+      toggleTodo({
+        id,
+      })
+    );
   };
 
   const onToggleButtons = (event) => {
@@ -27,10 +29,22 @@ function TodoItem({ todo }) {
     );
   };
 
+  const onFavTodo = (event, id) => {
+    event.preventDefault();
+    dispatch(
+      favTodo({
+        id,
+      })
+    );
+
+    setShowButtons(false);
+  };
+
   return (
     <li
       className={`todo-item 
         ${todo.completed ? 'todo-item--completed' : ''}
+        ${todo.favorite ? 'todo-item--fav' : ''}
         ${showButtons ? 'todo-item--show' : ''}
       `}
     >
@@ -39,7 +53,7 @@ function TodoItem({ todo }) {
           className="todo-item__checkbox"
           type="checkbox"
           checked={todo.completed}
-          onChange={event => onChangeHandler(event, todo.id)}
+          onChange={(event) => onChangeHandler(event, todo.id)}
         />
         <span className="todo-item__checkmark"></span>
         <span className="todo-item__description todo-item__description--view">
@@ -61,7 +75,10 @@ function TodoItem({ todo }) {
         <button className="todo-item__button todo-item__button--edit">
           ✏️
         </button>
-        <button className="todo-item__button todo-item__button--fav">
+        <button
+          className="todo-item__button todo-item__button--fav"
+          onClick={(event) => onFavTodo(event, todo.id)}
+        >
           <span className="todo-item__star todo-item__star--empty">☆</span>
           <span className="todo-item__star todo-item__star--filled">★</span>
         </button>
