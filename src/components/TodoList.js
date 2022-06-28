@@ -8,13 +8,21 @@ function TodoList() {
     return state.todos;
   });
 
-  return (
-    <ul className="todo-list">
-      {todos.map((todo) => (
-        <TodoItem todo={todo} key={todo.id} />
-      ))}
-    </ul>
-  );
+  const counter = todos.length;
+
+  if (counter > 0) {
+    return (
+      <ul className="todo-list">
+        {todos.map((todo) => (
+          <TodoItem todo={todo} key={todo.id} />
+        ))}
+      </ul>
+    );
+  } else {
+    return (
+      <p className="todo-list__empty">No todos.</p>
+    );
+  }
 }
 
 export default TodoList;
