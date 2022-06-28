@@ -10,8 +10,8 @@ function Info() {
   const counter = todosLeft.length;
 
   return (
-    <div class="info">
-      <p class="info__left">{counter} left{counter > 1 ? 's' : '' }</p>
+    <div className="info">
+      <p className="info__left">{counter} left{counter > 1 ? 's' : '' }</p>
     </div>
   );
 }
