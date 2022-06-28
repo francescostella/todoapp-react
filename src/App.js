@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import AddForm from './components/AddForm';
 import TodoList from './components/TodoList';
+import Info from './components/Info';
 import Footer from './components/Footer';
 import './App.scss';
 
@@ -24,6 +25,7 @@ function App() {
       <Header />
       <AddForm />
       <TodoList />
+      <Info />
       <Footer />
     </div>
   );
