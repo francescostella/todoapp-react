@@ -13,16 +13,20 @@ const todosSlice = createSlice({
         favorite: false,
       });
     },
+    editTodo: (state, action) => {
+      const todo = state.find((todo) => todo.id === action.payload.id);
+      todo.text = action.payload.text;
+    },
     toggleTodo: (state, action) => {
       const todo = state.find((todo) => todo.id === action.payload.id);
       todo.completed = !todo.completed;
     },
     favTodo: (state, action) => {
-      const todo = state.find(todo => todo.id === action.payload.id);
+      const todo = state.find((todo) => todo.id === action.payload.id);
       todo.favorite = !todo.favorite;
 
       // Move favorited to the top of the TodoList
-      const index = state.findIndex(todo => todo.id === action.payload.id);
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
 
       if (index >= 0) {
         const removeTodo = state.splice(index, 1);
@@ -40,7 +44,13 @@ const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, toggleTodo, favTodo, deleteTodo, clearCompleted } =
-  todosSlice.actions;
+export const {
+  addTodo,
+  editTodo,
+  toggleTodo,
+  favTodo,
+  deleteTodo,
+  clearCompleted,
+} = todosSlice.actions;
 export const selectCount = (state) => state.length;
 export default todosSlice.reducer;
