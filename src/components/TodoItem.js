@@ -30,13 +30,39 @@ function TodoItem({ todo }) {
     );
   };
 
-  const onEnableEditTodo = (event, id) => {
+  const onToggleEditTodo = (event, id) => {
     event.preventDefault();
-    setEditMode(true);
+    setEditMode(!editMode);
   };
 
-  const onSaveEditTodo = (event, id, text) => {
-    setEditMode(false);
+  const onBlurEditTodo = (event, id) => {
+    saveEditTodo(event, id);
+
+    if (!event.target.matches('.todo-item__description--edit')) {
+      setEditMode(false);
+    }
+  }
+  
+  const onKeyDownEditTodo = (event, id) => {
+    if (event.code === 'Escape' || event.code === 'Enter') {
+      saveEditTodo(event, id);
+      setEditMode(false);
+    }
+  };
+  
+  const onFavTodo = (event, id) => {
+    event.preventDefault();
+    dispatch(
+      favTodo({
+        id,
+      })
+      );
+      
+      setShowButtons(false);
+    };
+    
+  const saveEditTodo = (event, id) => {
+    const text = event.target.value;
 
     dispatch(
       editTodo({
@@ -44,23 +70,6 @@ function TodoItem({ todo }) {
         text,
       })
     );
-  };
-
-  const onKeyDownEditTodo = (event, id, text) => {
-    if (event.code === 'Escape' || event.code === 'Enter') {
-      onSaveEditTodo(event, id, text);
-    }
-  };
-
-  const onFavTodo = (event, id) => {
-    event.preventDefault();
-    dispatch(
-      favTodo({
-        id,
-      })
-    );
-
-    setShowButtons(false);
   };
 
   return (
@@ -87,8 +96,8 @@ function TodoItem({ todo }) {
           className="todo-item__description todo-item__description--edit"
           type="text"
           defaultValue={todo.text}
-          onBlur={(event) => onSaveEditTodo(event, todo.id, todo.text)}
-          onKeyDown={(event) => onKeyDownEditTodo(event, todo.id, todo.text)}
+          onBlur={(event) => onBlurEditTodo(event, todo.id)}
+          onKeyDown={(event) => onKeyDownEditTodo(event, todo.id)}
         />
       </label>
       <div className="todo-item__buttons">
@@ -100,7 +109,7 @@ function TodoItem({ todo }) {
         </button>
         <button
           className="todo-item__button todo-item__button--edit"
-          onClick={(event) => onEnableEditTodo(event, todo.id)}
+          onClick={(event) => onToggleEditTodo(event, todo.id)}
         >
           ✏️
         </button>
