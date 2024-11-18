@@ -8,7 +8,7 @@ function Header() {
       <ThemeToggle />
       <h1 className="header__title">TodoApp</h1>
       <p className="header__subtitle">
-        Application written in vanilla Javascript
+        Application written in React + Redux
       </p>
     </header>
   );
